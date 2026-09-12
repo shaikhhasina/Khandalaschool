@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM SHRI Z.P. Prathmik Aadarsh Kendrashala, Khandala</title>
+<meta name="description" content="PM SHRI Jilha Parishad Prathmik Aadarsh Kendrashala Khandala — a model primary school under Zilla Parishad Satara, providing quality education for all.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #FBF3E1;
+    --gold: #F3D093;
+    --gold-pale: #F7EDBF;
+    --tan: #C8A06F;
+    --brown-warm: #A27747;
+    --brown-dark: #4A331F;
+    --ink: #2B1B0E;
+    --green: #1A7A34;
+    --green-soft: #E7F3EA;
+    --maroon: #9D4022;
+    --white: #FFFFFF;
+    --radius: 4px;
+    --max: 1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Work Sans', sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    color:var(--brown-dark);
+    margin:0 0 .4em;
+    line-height:1.2;
+    font-weight:600;
+  }
+  .devanagari{ font-family:'Noto Sans Devanagari', 'Work Sans', sans-serif; }
+  p{margin:0 0 1em;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+  .btn{
+    display:inline-block;
+    padding:12px 26px;
+    border-radius:var(--radius);
+    font-weight:600;
+    text-decoration:none;
+    border:2px solid transparent;
+    font-size:.95rem;
+    transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--green); color:var(--white);}
+  .btn-outline{background:transparent; border-color:var(--brown-dark); color:var(--brown-dark);}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--maroon); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* skip link */
+  .skip{position:absolute; left:-999px; top:0; background:var(--ink); color:var(--white); padding:10px 16px; z-index:200;}
+  .skip:focus{left:16px; top:16px;}
+
+  /* header */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:var(--white);
+    border-bottom:1px solid #ECE0C8;
+  }
+  .top-strip{
+    background:var(--brown-dark); color:var(--gold-pale);
+    font-size:.82rem;
+  }
+  .top-strip .wrap{display:flex; justify-content:space-between; padding:6px 24px; flex-wrap:wrap; gap:6px;}
+  .navbar{display:flex; align-items:center; justify-content:space-between; padding:14px 24px; gap:20px;}
+  .brand{display:flex; align-items:center; gap:14px; text-decoration:none;}
+  .brand img{width:56px; height:56px;}
+  .brand-text h1{font-size:1.15rem; margin:0; color:var(--brown-dark);}
+  .brand-text span{font-size:.82rem; color:var(--brown-warm); display:block;}
+  nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0; font-weight:500; font-size:.95rem;}
+  nav a{text-decoration:none; color:var(--ink); position:relative; padding-bottom:4px;}
+  nav a::after{content:""; position:absolute; left:0; bottom:0; width:0; height:2px; background:var(--green); transition:width .2s;}
+  nav a:hover::after{width:100%;}
+  .nav-toggle{display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--brown-dark);}
+
+  @media (max-width:860px){
+    nav{position:fixed; top:0; right:-100%; height:100vh; width:74%; max-width:320px; background:var(--cream); padding:90px 30px; transition:right .25s ease; box-shadow:-6px 0 20px rgba(0,0,0,.15);}
+    nav.open{right:0;}
+    nav ul{flex-direction:column; gap:22px;}
+    .nav-toggle{display:block;}
+  }
+
+  /* hero */
+  .hero{
+    background: linear-gradient(160deg, var(--gold-pale) 0%, var(--gold) 55%, var(--tan) 100%);
+    padding:70px 0 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center;
+    padding-bottom:56px;
+  }
+  .badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--maroon); color:var(--white);
+    padding:6px 14px; border-radius:999px; font-size:.8rem; font-weight:600;
+    margin-bottom:18px;
+  }
+  .hero h2{font-size:2.5rem; max-width:11ch;}
+  .hero p.lead{font-size:1.08rem; max-width:46ch; color:var(--brown-dark);}
+  .hero-actions{display:flex; gap:14px; margin-top:26px; flex-wrap:wrap;}
+  .hero-emblem{
+    background:var(--white);
+    border-radius:50%;
+    padding:26px;
+    box-shadow:0 20px 50px rgba(74,51,31,.18);
+    justify-self:center;
+    width:min(320px, 80%);
+  }
+  .stat-bar{
+    background:var(--brown-dark);
+    color:var(--gold-pale);
+  }
+  .stat-bar .wrap{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    text-align:center;
+  }
+  .stat-bar div{padding:22px 10px; border-right:1px solid rgba(255,255,255,.12);}
+  .stat-bar div:last-child{border-right:none;}
+  .stat-bar strong{display:block; font-family:'Fraunces',serif; font-size:1.6rem; color:var(--white);}
+  .stat-bar span{font-size:.82rem; opacity:.85;}
+  @media (max-width:860px){
+    .hero .wrap{grid-template-columns:1fr; text-align:center;}
+    .hero-actions{justify-content:center;}
+    .hero p.lead{margin-left:auto; margin-right:auto;}
+    .stat-bar .wrap{grid-template-columns:repeat(2,1fr);}
+    .stat-bar div{border-right:none; border-bottom:1px solid rgba(255,255,255,.12);}
+  }
+
+  section{padding:72px 0;}
+  .section-head{max-width:640px; margin-bottom:42px;}
+  .section-head p{color:var(--brown-warm); font-size:1.05rem;}
+  .alt{background:var(--cream);}
+
+  /* about */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start;}
+  .quote-card{
+    background:var(--green-soft); border-left:4px solid var(--green);
+    padding:22px 24px; border-radius:var(--radius); margin-bottom:18px;
+  }
+  .quote-card h4{font-size:1rem; color:var(--green); margin-bottom:8px;}
+  .achievements{list-style:none; margin:0; padding:0;}
+  .achievements li{
+    display:flex; gap:12px; padding:12px 0; border-bottom:1px solid #ECE0C8;
+  }
+  .achievements li:last-child{border-bottom:none;}
+  .achievements .tick{color:var(--green); font-weight:700; flex-shrink:0;}
+  @media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
+
+  /* programs / schemes cards */
+  .grid-cards{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  @media (max-width:1000px){.grid-cards{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.grid-cards{grid-template-columns:1fr;}}
+  .card{
+    background:var(--white); border:1px solid #ECE0C8; border-radius:var(--radius);
+    padding:26px 22px;
+  }
+  .card .icon{
+    width:46px; height:46px; border-radius:50%;
+    background:var(--gold-pale); display:flex; align-items:center; justify-content:center;
+    font-size:1.3rem; margin-bottom:16px;
+  }
+  .card h4{font-size:1.05rem; margin-bottom:8px;}
+  .card p{font-size:.92rem; color:var(--brown-warm); margin-bottom:10px;}
+  .card ul{margin:0; padding-left:18px; font-size:.88rem; color:var(--ink);}
+  .card ul li{margin-bottom:4px;}
+
+  /* teachers */
+  .teacher-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  @media (max-width:860px){.teacher-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.teacher-grid{grid-template-columns:1fr;}}
+  .teacher{text-align:center;}
+  .teacher .photo{
+    width:120px; height:120px; border-radius:50%; margin:0 auto 14px;
+    background:var(--gold-pale); display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-size:1.8rem; color:var(--brown-warm);
+    border:3px solid var(--gold);
+  }
+  .teacher h4{font-size:1rem; margin-bottom:2px;}
+  .teacher span{font-size:.85rem; color:var(--brown-warm);}
+
+  /* gallery */
+  .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  @media (max-width:860px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  .gallery-item{
+    aspect-ratio:1/1; border-radius:var(--radius); overflow:hidden;
+    background:linear-gradient(135deg,var(--gold-pale),var(--tan));
+    display:flex; align-items:center; justify-content:center;
+    color:var(--brown-dark); font-size:.85rem; font-weight:600; text-align:center; padding:12px;
+  }
+
+  /* admissions */
+  .steps{counter-reset:step; list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  @media (max-width:860px){.steps{grid-template-columns:1fr;}}
+  .steps li{
+    counter-increment:step; position:relative; padding:30px 20px 20px; background:var(--white);
+    border:1px solid #ECE0C8; border-radius:var(--radius);
+  }
+  .steps li::before{
+    content:counter(step);
+    position:absolute; top:-18px; left:20px;
+    width:36px; height:36px; border-radius:50%;
+    background:var(--maroon); color:var(--white);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-family:'Fraunces',serif;
+  }
+  .steps h4{margin-bottom:6px; font-size:1.02rem;}
+  .doc-dates{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:40px;}
+  @media (max-width:760px){.doc-dates{grid-template-columns:1fr;}}
+  .doc-dates ul{padding-left:20px;}
+
+  /* contact */
+  .contact-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:50px;}
+  @media (max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+  .info-item{display:flex; gap:14px; margin-bottom:24px;}
+  .info-item .ic{
+    width:42px; height:42px; border-radius:50%; background:var(--green-soft); color:var(--green);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem;
+  }
+  .info-item h4{font-size:.98rem; margin-bottom:2px;}
+  .info-item p{margin:0; font-size:.92rem; color:var(--brown-warm);}
+  form{display:grid; gap:16px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:560px){.form-row{grid-template-columns:1fr;}}
+  input, select, textarea{
+    width:100%; padding:12px 14px; border:1px solid var(--tan); border-radius:var(--radius);
+    font-family:inherit; font-size:.95rem; background:var(--white);
+  }
+  label{font-size:.85rem; font-weight:600; margin-bottom:4px; display:block; color:var(--brown-dark);}
+  textarea{resize:vertical; min-height:110px;}
+  form button{justify-self:start;}
+
+  /* footer */
+  footer{background:var(--brown-dark); color:var(--gold-pale); padding:56px 0 0;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:36px; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,.12);}
+  @media (max-width:860px){.foot-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.foot-grid{grid-template-columns:1fr;}}
+  footer h4{color:var(--white); font-family:'Work Sans',sans-serif; font-size:.95rem; margin-bottom:14px; font-weight:700;}
+  footer ul{list-style:none; padding:0; margin:0;}
+  footer li{margin-bottom:9px; font-size:.9rem;}
+  footer a{text-decoration:none; color:var(--gold-pale); opacity:.9;}
+  footer a:hover{opacity:1; text-decoration:underline;}
+  .foot-brand{display:flex; gap:12px; align-items:center; margin-bottom:14px;}
+  .foot-brand img{width:44px; height:44px;}
+  .bottom-bar{text-align:center; padding:18px 0; font-size:.82rem; opacity:.8;}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<header>
+  <div class="top-strip">
+    <div class="wrap">
+      <span>जिल्हा परिषद, सातारा | Government of Maharashtra</span>
+      <span>khandala.zpschool@gmail.com&nbsp; |&nbsp; +91 98765 43210</span>
+    </div>
+  </div>
+  <div class="navbar wrap">
+    <a class="brand" href="#home">
+      <img src="assets/logo.png" alt="School emblem">
+      <span class="brand-text">
+        <h1>PM SHRI Kendrashala Khandala</h1>
+        <span>Jilha Parishad Prathmik Aadarsh Kendrashala</span>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <nav id="nav">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#teachers">Teachers</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div>
+        <span class="badge">PM SHRI Scheme School</span>
+        <h2>Rooted in Khandala,<br>raising every child.</h2>
+        <p class="lead">Pmshri Jilha Parishad Prathmik Aadarsh Kendrashala Khandala is a government model primary school under Zilla Parishad Satara, built to give every child a strong, joyful start in learning.</p>
+        <div class="hero-actions">
+          <a href="#admissions" class="btn btn-primary">Apply for Admission</a>
+          <a href="#about" class="btn btn-outline">Know Our School</a>
+        </div>
+      </div>
+      <img class="hero-emblem" src="assets/logo.png" alt="Zilla Parishad Satara emblem">
+    </div>
+    <div class="stat-bar">
+      <div class="wrap">
+        <div><strong>1st&ndash;5th</strong><span>Classes offered</span></div>
+        <div><strong>300+</strong><span>Students enrolled</span></div>
+        <div><strong>100%</strong><span>Mid-day meal coverage</span></div>
+        <div><strong>PM SHRI</strong><span>Model school status</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>About Our School</h2>
+        <p>A Zilla Parishad primary school selected under the PM SHRI scheme to become a model of quality, inclusive education in Khandala.</p>
+      </div>
+      <div class="about-grid">
+        <div>
+          <div class="quote-card">
+            <h4>Our Vision</h4>
+            <p>To nurture confident, curious learners from Khandala who grow into responsible, capable citizens — through education that is joyful, inclusive, and rooted in values.</p>
+          </div>
+          <div class="quote-card">
+            <h4>Our Mission</h4>
+            <p>To deliver quality primary education supported by government schemes, modern teaching methods, and an environment where every child feels safe to learn and grow.</p>
+          </div>
+        </div>
+        <div>
+          <h4>Key Highlights</h4>
+          <ul class="achievements">
+            <li><span class="tick">&#10003;</span><span>Selected under the PM SHRI (PM Schools for Rising India) scheme</span></li>
+            <li><span class="tick">&#10003;</span><span>Free textbooks, uniforms, and mid-day meals for every student</span></li>
+            <li><span class="tick">&#10003;</span><span>Digital classroom and ICT-enabled teaching in progress</span></li>
+            <li><span class="tick">&#10003;</span><span>Active parent-teacher and school management committee</span></li>
+            <li><span class="tick">&#10003;</span><span>Focus on sports, cultural activities, and co-curricular learning</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS / GOV SCHEMES -->
+  <section class="alt" id="programs">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Government Schemes &amp; Support</h2>
+        <p>Every student at our school benefits from these central and state government initiatives.</p>
+      </div>
+      <div class="grid-cards">
+        <div class="card">
+          <div class="icon">&#127860;</div>
+          <h4>Mid-Day Meal</h4>
+          <p>Nutritious, hot meals served daily to support health and regular attendance.</p>
+          <ul><li>Balanced daily menu</li><li>Full student coverage</li></ul>
+        </div>
+        <div class="card">
+          <div class="icon">&#128218;</div>
+          <h4>Free Textbooks &amp; Uniforms</h4>
+          <p>A complete set of books, uniforms, and stationery provided at no cost.</p>
+          <ul><li>All subject textbooks</li><li>Two uniform sets yearly</li></ul>
+        </div>
+        <div class="card">
+          <div class="icon">&#128187;</div>
+          <h4>Digital India Initiative</h4>
+          <p>Technology-supported classrooms to make learning more interactive.</p>
+          <ul><li>Smart classroom setup</li><li>Digital learning resources</li></ul>
+        </div>
+        <div class="card">
+          <div class="icon">&#127942;</div>
+          <h4>PM SHRI Upgrades</h4>
+          <p>Infrastructure and teaching improvements as a designated model school.</p>
+          <ul><li>Upgraded facilities</li><li>Modern teaching aids</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHERS -->
+  <section id="teachers">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Our Teachers</h2>
+        <p>A dedicated teaching staff committed to every child's progress.</p>
+      </div>
+      <div class="teacher-grid">
+        <div class="teacher">
+          <div class="photo">HM</div>
+          <h4>Headmaster / Headmistress</h4>
+          <span>School In-Charge</span>
+        </div>
+        <div class="teacher">
+          <div class="photo">T1</div>
+          <h4>Class Teacher</h4>
+          <span>Std. 1st &ndash; 2nd</span>
+        </div>
+        <div class="teacher">
+          <div class="photo">T2</div>
+          <h4>Class Teacher</h4>
+          <span>Std. 3rd &ndash; 4th</span>
+        </div>
+      </div>
+      <p style="margin-top:24px; font-size:.85rem; color:var(--brown-warm);">Note: replace the placeholder initials above with real staff photos and names once available.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="alt" id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Photo Gallery</h2>
+        <p>Moments from school events, activities, and everyday learning.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">Independence Day Celebration</div>
+        <div class="gallery-item">Annual Sports Day</div>
+        <div class="gallery-item">Classroom Activities</div>
+        <div class="gallery-item">Cultural Program</div>
+      </div>
+      <p style="margin-top:20px; font-size:.85rem; color:var(--brown-warm);">Replace these placeholders with actual event photos as they become available.</p>
+    </div>
+  </section>
+
+  <!-- ADMISSIONS -->
+  <section id="admissions">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Admissions</h2>
+        <p>Join our school for the upcoming academic year.</p>
+      </div>
+      <ul class="steps">
+        <li><h4>Visit the School Office</h4><p>Meet the headmaster to enquire about seat availability for your child's class.</p></li>
+        <li><h4>Submit Documents</h4><p>Provide the required documents for verification at the school office.</p></li>
+        <li><h4>Confirm Admission</h4><p>Complete the admission formalities to secure your child's seat.</p></li>
+      </ul>
+      <div class="doc-dates">
+        <div>
+          <h4>Required Documents</h4>
+          <ul>
+            <li>Birth Certificate</li>
+            <li>Aadhaar Card</li>
+            <li>Previous school's Transfer Certificate (if applicable)</li>
+            <li>Address Proof</li>
+            <li>Passport-size Photographs</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Important Dates</h4>
+          <p><strong>Academic Year:</strong> June 2026 &ndash; April 2027</p>
+          <p><strong>Admissions Open:</strong> June 1, 2026</p>
+          <p><strong>Classes Begin:</strong> June 15, 2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="alt" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Contact Us</h2>
+        <p>Have a question about admissions or school programs? Reach out to us.</p>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <div class="info-item">
+            <div class="ic">&#128205;</div>
+            <div><h4>Address</h4><p>PM SHRI Z.P. Prathmik Aadarsh Kendrashala<br>Khandala, Satara District, Maharashtra</p></div>
+          </div>
+          <div class="info-item">
+            <div class="ic">&#128222;</div>
+            <div><h4>Phone</h4><p>+91 98765 43210</p></div>
+          </div>
+          <div class="info-item">
+            <div class="ic">&#9993;</div>
+            <div><h4>Email</h4><p>khandala.zpschool@gmail.com</p></div>
+          </div>
+          <div class="info-item">
+            <div class="ic">&#128337;</div>
+            <div><h4>Office Hours</h4><p>Monday &ndash; Saturday: 10:00 AM &ndash; 5:00 PM</p></div>
+          </div>
+        </div>
+        <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been noted. (Connect this form to email/backend to make it functional.)');">
+          <div class="form-row">
+            <div><label for="name">Full Name</label><input id="name" type="text" required></div>
+            <div><label for="phone">Phone Number</label><input id="phone" type="tel" required></div>
+          </div>
+          <div>
+            <label for="email">Email Address</label>
+            <input id="email" type="email" required>
+          </div>
+          <div>
+            <label for="subject">Subject</label>
+            <select id="subject">
+              <option>Admission Inquiry</option>
+              <option>General Information</option>
+              <option>Complaint / Suggestion</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-brand">
+        <img src="assets/logo.png" alt="School emblem">
+        <div><strong style="color:var(--white)">PM SHRI Kendrashala Khandala</strong></div>
+      </div>
+      <p style="font-size:.88rem; opacity:.85;">Jilha Parishad Prathmik Aadarsh Kendrashala, Khandala &mdash; a PM SHRI model school under Zilla Parishad Satara.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Government Portals</h4>
+      <ul>
+        <li><a href="https://www.education.gov.in" target="_blank" rel="noopener">Ministry of Education</a></li>
+        <li><a href="https://zpsatara.gov.in" target="_blank" rel="noopener">Zilla Parishad Satara</a></li>
+        <li><a href="https://pmshrischools.education.gov.in" target="_blank" rel="noopener">PM SHRI Schools</a></li>
+        <li><a href="https://www.india.gov.in" target="_blank" rel="noopener">India.gov.in</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact Info</h4>
+      <p style="font-size:.9rem;">Khandala, Satara District, Maharashtra<br>Phone: +91 98765 43210<br>Email: khandala.zpschool@gmail.com</p>
+    </div>
+  </div>
+  <div class="bottom-bar wrap">
+    &copy; 2026 PM SHRI Jilha Parishad Prathmik Aadarsh Kendrashala, Khandala. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
