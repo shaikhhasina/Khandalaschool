@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // The public contact form can create entries, but never read,
+    // edit, or delete them - visitors can't see other people's inquiries.
+    match /contactInquiries/{docId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+  }
+}
+
+/*
+  HOW TO APPLY:
+  1. Firebase Console -> Firestore Database -> Rules tab
+  2. Paste this in, replacing the default test-mode rules
+  3. Click "Publish"
+
+  This lets any website visitor submit the contact form, but
+  only a signed-in staff member (via Staff Login) can view the
+  list in the dashboard.
+*/

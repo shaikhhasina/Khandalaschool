@@ -270,12 +270,12 @@
   <div class="top-strip">
     <div class="wrap">
       <span>जिल्हा परिषद, सातारा | Government of Maharashtra</span>
-      <span>khandala.zpschool@gmail.com&nbsp; |&nbsp; +91 98765 43210</span>
+      <span>khandala.zpschool@gmail.com&nbsp; |&nbsp; +91 98765 43210 &nbsp; |&nbsp; <a href="login.html" style="color:var(--gold-pale); text-decoration:underline;">Staff Login</a></span>
     </div>
   </div>
   <div class="navbar wrap">
     <a class="brand" href="#home">
-      <img src="assets/logo.png" alt="School emblem">
+      <img src="logo.png" alt="School emblem">
       <span class="brand-text">
         <h1>PM SHRI Kendrashala Khandala</h1>
         <span>Jilha Parishad Prathmik Aadarsh Kendrashala</span>
@@ -494,18 +494,18 @@
             <div><h4>Office Hours</h4><p>Monday &ndash; Saturday: 10:00 AM &ndash; 5:00 PM</p></div>
           </div>
         </div>
-        <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been noted. (Connect this form to email/backend to make it functional.)');">
+        <form id="contactForm" data-firebase-collection="contactInquiries">
           <div class="form-row">
-            <div><label for="name">Full Name</label><input id="name" type="text" required></div>
-            <div><label for="phone">Phone Number</label><input id="phone" type="tel" required></div>
+            <div><label for="name">Full Name</label><input id="name" name="name" type="text" required></div>
+            <div><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" required></div>
           </div>
           <div>
             <label for="email">Email Address</label>
-            <input id="email" type="email" required>
+            <input id="email" name="email" type="email" required>
           </div>
           <div>
             <label for="subject">Subject</label>
-            <select id="subject">
+            <select id="subject" name="subject">
               <option>Admission Inquiry</option>
               <option>General Information</option>
               <option>Complaint / Suggestion</option>
@@ -514,9 +514,10 @@
           </div>
           <div>
             <label for="message">Message</label>
-            <textarea id="message" required></textarea>
+            <textarea id="message" name="message" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Send Message</button>
+          <p class="form-status" style="font-size:.9rem; margin:0;"></p>
         </form>
       </div>
     </div>
@@ -575,6 +576,13 @@
     });
   });
 </script>
+
+<!-- Firebase: connects the contact form above to Firestore -->
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="form-handler.js"></script>
 
 </body>
 </html>

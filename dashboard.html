@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Dashboard — PM SHRI Kendrashala Khandala</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3E1; --gold-pale:#F7EDBF; --tan:#C8A06F; --brown-warm:#A27747;
+    --brown-dark:#4A331F; --ink:#2B1B0E; --green:#1A7A34; --green-soft:#E7F3EA;
+    --maroon:#9D4022; --white:#FFFFFF; --radius:4px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; font-family:'Work Sans',sans-serif; color:var(--ink); background:var(--cream);}
+  header{
+    background:var(--brown-dark); color:var(--gold-pale); padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+  header .brand{display:flex; align-items:center; gap:12px;}
+  header img{width:40px; height:40px;}
+  header h1{font-family:'Fraunces',serif; font-size:1.1rem; margin:0; color:var(--white);}
+  header .userinfo{font-size:.85rem; display:flex; align-items:center; gap:14px;}
+  .logout{
+    background:var(--maroon); color:var(--white); border:none; padding:8px 16px;
+    border-radius:var(--radius); cursor:pointer; font-size:.85rem; font-weight:600;
+  }
+  main{max-width:1000px; margin:32px auto; padding:0 20px;}
+  .panel{
+    background:var(--white); border:1px solid #ECE0C8; border-radius:8px;
+    padding:24px; margin-bottom:24px;
+  }
+  .panel h2{font-family:'Fraunces',serif; font-size:1.2rem; color:var(--brown-dark); margin:0 0 6px;}
+  .panel .hint{font-size:.85rem; color:var(--brown-warm); margin-bottom:18px;}
+  table{width:100%; border-collapse:collapse; font-size:.9rem;}
+  th, td{text-align:left; padding:10px 8px; border-bottom:1px solid #ECE0C8; vertical-align:top;}
+  th{color:var(--brown-warm); font-weight:600; font-size:.82rem; text-transform:uppercase; letter-spacing:.02em;}
+  .tag{
+    display:inline-block; background:var(--green-soft); color:var(--green);
+    padding:3px 10px; border-radius:999px; font-size:.78rem; font-weight:600;
+  }
+  .empty, .loading{color:var(--brown-warm); font-size:.9rem; padding:14px 0;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img src="logo.png" alt="School emblem">
+    <h1>Staff Dashboard — PM SHRI Kendrashala Khandala</h1>
+  </div>
+  <div class="userinfo">
+    <span id="userEmail"></span>
+    <button class="logout" id="logoutBtn">Log Out</button>
+  </div>
+</header>
+
+<main>
+  <div class="panel">
+    <h2>Contact Form Inquiries</h2>
+    <p class="hint">Every submission from the website's Contact Us form appears here automatically, newest first.</p>
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Phone</th><th>Email</th><th>Subject</th><th>Message</th><th>Received</th></tr>
+      </thead>
+      <tbody id="entriesBody">
+        <tr><td colspan="6" class="loading">Loading inquiries...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+
+<script>
+  const userEmailEl = document.getElementById("userEmail");
+  const entriesBody = document.getElementById("entriesBody");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  // Route guard - only signed-in staff can view this page
+  auth.onAuthStateChanged(user => {
+    if (!user) {
+      window.location.href = "login.html";
+      return;
+    }
+    userEmailEl.textContent = user.email;
+    loadInquiries();
+  });
+
+  logoutBtn.addEventListener("click", () => {
+    auth.signOut().then(() => window.location.href = "login.html");
+  });
+
+  function loadInquiries() {
+    db.collection("contactInquiries")
+      .orderBy("submittedAt", "desc")
+      .limit(50)
+      .get()
+      .then(snapshot => {
+        if (snapshot.empty) {
+          entriesBody.innerHTML = "<tr><td colspan='6' class='empty'>No inquiries yet.</td></tr>";
+          return;
+        }
+        entriesBody.innerHTML = "";
+        snapshot.forEach(doc => {
+          const d = doc.data();
+          const date = d.submittedAt && d.submittedAt.toDate
+            ? d.submittedAt.toDate().toLocaleString()
+            : "-";
+          const row = document.createElement("tr");
+          row.innerHTML =
+            "<td>" + escapeHtml(d.name || "") + "</td>" +
+            "<td>" + escapeHtml(d.phone || "") + "</td>" +
+            "<td>" + escapeHtml(d.email || "") + "</td>" +
+            "<td><span class='tag'>" + escapeHtml(d.subject || "") + "</span></td>" +
+            "<td>" + escapeHtml(d.message || "") + "</td>" +
+            "<td>" + date + "</td>";
+          entriesBody.appendChild(row);
+        });
+      })
+      .catch(err => {
+        entriesBody.innerHTML = "<tr><td colspan='6' class='empty'>Error loading data: " + escapeHtml(err.message) + "</td></tr>";
+      });
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+</script>
+
+</body>
+</html>
