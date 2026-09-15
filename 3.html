@@ -15,11 +15,10 @@
     <a href="index.html" class="brand">
       <img src="assets/zp-logo.png" alt="Adarsh Vidyalaya logo">
       <span class="brand-name">
-       
         <span></span>
       </span>
     </a>
-    <nav class="main-nav" id="mainNav">
+    <nav class="main-nav">
       <a href="index.html" class="active">Home</a>
       <a href="#about">About Us</a>
       <a href="#academics">Academics</a>
@@ -27,16 +26,10 @@
       <a href="#facilities">Facilities</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact Us</a>
-      <a href="#admissions" class="mobile-cta">Admission Enquiry</a>
     </nav>
     <div class="nav-cta">
       <a href="#admissions" class="btn btn-primary">Admission Enquiry</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
   </div>
 </header>
 
@@ -46,7 +39,7 @@
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <h2>PM SHRI ZILLA PARISHAD PRATHMIK AADARSH KENDRA SHALA, KHANDALA</h2>
+      <h2>PM SHRI ZILLA PARISHAD PRATHMIK AADARSH KENDRA SHALA, KHANDALA</h1>
     <p>Providing quality education, strong values, and holistic development for students from Nursery to Higher Secondary.</p>
       <div class="hero-actions">
         <a href="#admissions" class="btn btn-primary">Apply for Admission</a>
@@ -54,7 +47,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <div class="hero-strip">
   <div class="container">
     <div class="item"><span class="dot"></span>CBSE / State Board</div>
@@ -271,7 +264,7 @@ AT. & POST: KHANDALA, TAL: KHANDALA, DIST: SATARA</p></div></li>
       <div>
         <div class="brand" style="margin-bottom:14px;">
           <img src="assets/zp-logo.png" alt="Adarsh Vidyalaya logo">
-          <span class="brand-name" style="color:#fff;">PM SHRI ZILLA PARISHAD <br>PRIMARY ADARSH SCHOOL</span>
+          <span class="brand-name" style="color:#fff;">PM SHRI ZILLA PARISHAD <br>PRIMARY ADARSH SCHOOL></span>
         </div>
         <p style="color:#C9B392; max-width:320px;">Nurturing young minds and building bright futures, one student at a time.</p>
         <div class="social-row">
@@ -303,24 +296,6 @@ AT. & POST: KHANDALA, TAL: KHANDALA, DIST: SATARA</p></div></li>
 <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
-<script>
-  var navToggle = document.getElementById('navToggle');
-  var mainNav = document.getElementById('mainNav');
-  if (navToggle && mainNav) {
-    navToggle.addEventListener('click', function () {
-      var isOpen = mainNav.classList.toggle('is-open');
-      navToggle.classList.toggle('is-open', isOpen);
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-    mainNav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        mainNav.classList.remove('is-open');
-        navToggle.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-</script>
 <script src="js/firebase-config.js"></script>
 <script src="js/main.js"></script>
 </body>

@@ -3,104 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Staff Login — PM SHRI Kendrashala Khandala</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --cream:#FBF3E1; --gold:#F3D093; --gold-pale:#F7EDBF; --tan:#C8A06F;
-    --brown-warm:#A27747; --brown-dark:#4A331F; --ink:#2B1B0E; --green:#1A7A34;
-    --maroon:#9D4022; --white:#FFFFFF; --radius:4px;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0; font-family:'Work Sans',sans-serif; color:var(--ink);
-    background:linear-gradient(160deg, var(--gold-pale) 0%, var(--gold) 55%, var(--tan) 100%);
-    min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px;
-  }
-  .card{
-    background:var(--white); border-radius:8px; padding:36px 32px; width:100%;
-    max-width:380px; box-shadow:0 20px 50px rgba(74,51,31,.18);
-  }
-  .card img{width:64px; height:64px; display:block; margin:0 auto 12px;}
-  h1{font-family:'Fraunces',serif; font-size:1.3rem; color:var(--brown-dark); text-align:center; margin:0 0 4px;}
-  .sub{text-align:center; font-size:.85rem; color:var(--brown-warm); margin-bottom:24px;}
-  label{font-size:.85rem; font-weight:600; margin-bottom:4px; display:block; color:var(--brown-dark);}
-  input{
-    width:100%; padding:11px 13px; border:1px solid var(--tan); border-radius:var(--radius);
-    font-family:inherit; font-size:.95rem; margin-bottom:16px;
-  }
-  button{
-    width:100%; padding:12px; background:var(--green); color:var(--white); border:none;
-    border-radius:var(--radius); font-weight:600; font-size:.98rem; cursor:pointer;
-  }
-  button:hover{opacity:.92;}
-  .msg{font-size:.85rem; margin-top:12px; text-align:center;}
-  .msg.error{color:var(--maroon);}
-  .msg.success{color:var(--green);}
-  .back{display:block; text-align:center; margin-top:18px; font-size:.85rem; color:var(--brown-warm); text-decoration:none;}
-</style>
+<title>Staff Login | Adarsh Vidyalaya</title>
+<link rel="icon" href="assets/zp-logo.png">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="card">
-  <img src="logo.png" alt="School emblem">
-  <h1>Staff Login</h1>
-  <p class="sub">PM SHRI Kendrashala, Khandala</p>
+<div class="auth-shell">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <img src="assets/zp-logo.png" alt="Adarsh Vidyalaya logo">
+      <div>
+        <!--<strong>Adarsh Vidyalaya</strong> 
+        <div style="font-size:.8rem; color:var(--ink-soft);">Staff / Admin Login</div> -->
+      </div>
+    </div>
 
-  <label for="email">Email</label>
-  <input type="email" id="email" placeholder="staff@khandalaschool.in">
+    <form id="loginForm">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Log In</button>
+      <div id="loginMsg" class="form-msg"></div>
+    </form>
 
-  <label for="password">Password</label>
-  <input type="password" id="password" placeholder="Enter your password">
-
-  <button id="loginBtn">Log In</button>
-  <div class="msg" id="msg"></div>
-
-  <a class="back" href="index.html">&larr; Back to school website</a>
+    <p style="text-align:center; margin-top:20px; font-size:.85rem;">
+      <a href="index.html" style="color:var(--saffron); font-weight:600;">← Back to school website</a>
+    </p>
+  </div>
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
-<script src="firebase-config.js"></script>
-
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
 <script>
-  const emailEl = document.getElementById("email");
-  const passEl = document.getElementById("password");
-  const msgEl = document.getElementById("msg");
-  const loginBtn = document.getElementById("loginBtn");
-
-  // Already logged in? Skip straight to the dashboard.
-  auth.onAuthStateChanged(user => {
-    if (user) window.location.href = "dashboard.html";
+  // If already logged in, go straight to dashboard
+  auth.onAuthStateChanged((user) => {
+    if (user) window.location.href = 'dashboard.html';
   });
 
-  loginBtn.addEventListener("click", () => {
-    const email = emailEl.value.trim();
-    const password = passEl.value;
+  const loginForm = document.getElementById('loginForm');
+  const loginMsg = document.getElementById('loginMsg');
 
-    if (!email || !password) {
-      showMsg("Please enter your email and password.", "error");
-      return;
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = loginForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Logging in...';
+    loginMsg.className = 'form-msg';
+
+    try {
+      await auth.signInWithEmailAndPassword(
+        loginForm.email.value.trim(),
+        loginForm.password.value
+      );
+      window.location.href = 'dashboard.html';
+    } catch (err) {
+      loginMsg.textContent = 'Login failed: ' + err.message;
+      loginMsg.className = 'form-msg error';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Log In';
     }
-
-    loginBtn.disabled = true;
-    loginBtn.textContent = "Logging in...";
-
-    auth.signInWithEmailAndPassword(email, password)
-      .then(() => { window.location.href = "dashboard.html"; })
-      .catch(err => {
-        showMsg(err.message, "error");
-        loginBtn.disabled = false;
-        loginBtn.textContent = "Log In";
-      });
   });
-
-  function showMsg(text, type) {
-    msgEl.textContent = text;
-    msgEl.className = "msg " + type;
-  }
 </script>
-
 </body>
 </html>
