@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | PM SHRI ZP Prathmik Aadarsh Kendra Shala, Khandala</title>
+<link rel="icon" href="assets/zp-logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/zp-logo.png" alt="School logo">
+      <span class="brand-name"><span></span></span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="academics.html">Academics</a>
+      <a href="teachers.html">Teachers</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html" class="active">Contact Us</a>
+      <a href="contact.html" class="mobile-cta">Admission Enquiry</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-primary">Admission Enquiry</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== Page hero ===== -->
+<section class="hero page-hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Contact Us</h1>
+      <p>Visit our campus, call the school office, or send an admission enquiry below.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contact / Admission Enquiry Form ===== -->
+<section id="enquiry">
+  <div class="container">
+    <div class="contact-wrap">
+      <div>
+        <h3>Visit Our Campus</h3>
+        <ul class="info-list">
+          <li><span class="ic">📍</span><div><strong>School Address</strong><p style="margin:0;">Z.P. PRIMARY SCHOOL, KHANDALA<br>AT. &amp; POST: KHANDALA, TAL: KHANDALA, DIST: SATARA</p></div></li>
+          <li><span class="ic">📞</span><div><strong>Phone</strong><p style="margin:0;">+91 96737 98495</p></div></li>
+          <li><span class="ic">✉️</span><div><strong>Email</strong><p style="margin:0;">zpcpskhandala1982@gmail.com</p></div></li>
+          <li><span class="ic">🕐</span><div><strong>School Timing</strong><p style="margin:0;">
+Monday to Thursday: 10:00 AM to 4:45 PM<br>
+Friday: 9:00 AM to 4:30 PM<br>
+Saturday: 8:00 AM to 12:00 PM</p></div></li>
+        </ul>
+        <div class="map-embed">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3793.268847026344!2d74.01721837392328!3d18.059104683109894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc259e73728362f%3A0xdd4a68770ea06896!2sZ%20P%20Primary%20School!5e0!3m2!1sen!2sin!4v1789539877904!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3>Admission Enquiry Form</h3>
+        <form id="enquiryForm">
+          <div class="form-row">
+            <div class="field">
+              <label for="studentName">Student Name</label>
+              <input type="text" id="studentName" name="studentName" required>
+            </div>
+            <div class="field">
+              <label for="parentName">Parent Name</label>
+              <input type="text" id="parentName" name="parentName" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="mobile">Mobile Number</label>
+              <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+            </div>
+            <div class="field">
+              <label for="classApplying">Class Applying For</label>
+              <select id="classApplying" name="classApplying" required>
+                <option value="" disabled selected>Select class</option>
+                <option>Nursery</option>
+                <option>Jr. KG</option>
+                <option>Sr. KG</option>
+                <option>Class I</option>
+                <option>Class II</option>
+                <option>Class III</option>
+                <option>Class IV</option>
+                <option>Class V</option>
+                <option>Class VI–VIII</option>
+                <option>Class IX–X</option>
+                <option>Class XI–XII</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">Message (optional)</label>
+            <textarea id="message" name="message" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Submit Enquiry</button>
+          <div id="enquiryMsg" class="form-msg"></div>
+        </form>
+        <p style="margin-top:16px; font-size:.85rem;"><a href="admissions.html" style="color:var(--saffron); font-weight:600;">See required documents for admission →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px;">
+          <img src="assets/zp-logo.png" alt="Adarsh Vidyalaya logo">
+          <span class="brand-name" style="color:#fff;">PM SHRI ZILLA PARISHAD <br>PRIMARY ADARSH SCHOOL</span>
+        </div>
+        <p style="color:#C9B392; max-width:320px;">Nurturing young minds and building bright futures, one student at a time.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">i</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="about.html">About Us</a>
+        <a href="academics.html">Academic Programs</a>
+        <a href="admissions.html">Admissions</a>
+      </div>
+      <div>
+        <h4>Admin</h4>
+        <a href="login.html">Staff / Admin Login</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PM SHRI ZILLA PARISHAD PRATHMIK AADARSH KENDRA SHALA, KHANDALA. All rights reserved.</span>
+      <span>Managed by Satara Zilla Parishad</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Firebase SDKs (compat) -->
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script>
+  var navToggle = document.getElementById('navToggle');
+  var mainNav = document.getElementById('mainNav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', function () {
+      var isOpen = mainNav.classList.toggle('is-open');
+      navToggle.classList.toggle('is-open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    mainNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mainNav.classList.remove('is-open');
+        navToggle.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

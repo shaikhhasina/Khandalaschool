@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Login | Adarsh Vidyalaya</title>
+<link rel="icon" href="assets/zp-logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="auth-shell">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <img src="assets/zp-logo.png" alt="Adarsh Vidyalaya logo">
+      <div>
+        <!--<strong>Adarsh Vidyalaya</strong> 
+        <div style="font-size:.8rem; color:var(--ink-soft);">Staff / Admin Login</div> -->
+      </div>
+    </div>
+
+    <form id="loginForm">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Log In</button>
+      <div id="loginMsg" class="form-msg"></div>
+    </form>
+
+    <p style="text-align:center; margin-top:20px; font-size:.85rem;">
+      <a href="index.html" style="color:var(--saffron); font-weight:600;">← Back to school website</a>
+    </p>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script>
+  // If already logged in, go straight to dashboard
+  auth.onAuthStateChanged((user) => {
+    if (user) window.location.href = 'dashboard.html';
+  });
+
+  const loginForm = document.getElementById('loginForm');
+  const loginMsg = document.getElementById('loginMsg');
+
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = loginForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Logging in...';
+    loginMsg.className = 'form-msg';
+
+    try {
+      await auth.signInWithEmailAndPassword(
+        loginForm.email.value.trim(),
+        loginForm.password.value
+      );
+      window.location.href = 'dashboard.html';
+    } catch (err) {
+      loginMsg.textContent = 'Login failed: ' + err.message;
+      loginMsg.className = 'form-msg error';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Log In';
+    }
+  });
+</script>
+</body>
+</html>
