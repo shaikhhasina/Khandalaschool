@@ -406,6 +406,76 @@ tr:last-child td { border-bottom: none; }
 .badge.reviewed { background: #E7F3E8; color: var(--leaf-green-dark); }
 .empty-row { text-align: center; color: var(--ink-soft); padding: 30px; }
 
+/* ---------- Interior page hero (About / Academics / Facilities / Gallery / Admissions / Contact) ---------- */
+.page-hero {
+  min-height: 240px;
+  padding: 0;
+}
+.page-hero .hero-content { padding: 56px 0; max-width: 760px; }
+.page-hero .hero-content h1 {
+  color: #fff;
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+.page-hero .hero-content p { margin: 0; }
+
+/* ---------- Two-column content grid (About story / Admissions eligibility, etc.) ---------- */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+/* ---------- Simple content card (mission/vision/values, eligibility notes) ---------- */
+.content-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+.content-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+.content-card p:last-child { margin-bottom: 0; }
+
+/* ---------- Numbered document / requirement list (Admissions) ---------- */
+.doc-list { list-style: none; margin: 0; padding: 0; }
+.doc-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.doc-list li:last-child { border-bottom: none; }
+.doc-list .num {
+  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+  background: var(--cream-soft); color: var(--maroon-dark);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: .85rem;
+}
+.doc-list strong { color: var(--maroon-dark); display: block; margin-bottom: 2px; }
+.doc-list span.note { font-size: .88rem; color: var(--ink-soft); }
+
+/* ---------- Teachers / Staff grid ---------- */
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.team-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform .2s ease;
+}
+.team-card:hover { transform: translateY(-4px); }
+.team-card img {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+ /*object-fit: contain;*/
+  margin: 0 auto 16px;
+  border: 3px solid var(--cream-soft);
+}
+.team-card h3 { font-size: 1rem; margin-bottom: 4px; }
+.team-card .role { color: var(--saffron); font-weight: 600; font-size: .85rem; margin-bottom: 6px; }
+.team-card .qual { color: var(--ink-soft); font-size: .82rem; margin: 0; }
+
 /* ---------- Utilities ---------- */
 .text-center { text-align: center; }
 .mt-24 { margin-top: 24px; }
@@ -418,6 +488,7 @@ tr:last-child td { border-bottom: none; }
 }
 @media (max-width: 960px) {
   .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-wrap { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -460,4 +531,5 @@ tr:last-child td { border-bottom: none; }
   .form-row { grid-template-columns: 1fr; }
   .dash-shell { flex-direction: column; }
   .dash-sidebar { width: 100%; }
+  .grid-2 { grid-template-columns: 1fr; }
 }
