@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply For Admission</title>
+<style>
+  :root{
+    --header-bg:#5c1a1a;
+    --accent:#e8823c;
+    --text:#3d2314;
+    --border:#e0d3ba;
+    --focus:#e8823c;
+    --bg:#faf3e3;
+    --muted:#7a6a55;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1c1611;
+      --text:#f1e6d3;
+      --border:#4a3c2a;
+      --muted:#c2b39a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1c1611;
+    --text:#f1e6d3;
+    --border:#4a3c2a;
+    --muted:#c2b39a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Georgia, 'Times New Roman', serif;
+  }
+  header{
+    background:var(--header-bg);
+    padding:40px 24px;
+    text-align:center;
+  }
+  header h1{
+    color:#fff;
+    margin:0;
+    font-size:2rem;
+  }
+  form{
+    max-width:640px;
+    margin:0 auto;
+    padding:32px 20px 60px;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  .field{
+    margin-bottom:28px;
+  }
+  label{
+    display:block;
+    font-weight:700;
+    margin-bottom:10px;
+    font-size:1rem;
+  }
+  .req{ color:#c0392b; }
+  input, select{
+    width:100%;
+    padding:12px 14px;
+    font-size:1rem;
+    border:1px solid var(--border);
+    border-radius:4px;
+    background:var(--bg);
+    color:var(--text);
+  }
+  input:focus, select:focus{
+    outline:none;
+    border-color:var(--focus);
+    box-shadow:0 0 0 2px rgba(47,90,168,0.2);
+  }
+  button{
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    padding:14px 32px;
+    font-size:1rem;
+    border-radius:24px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  button:hover{ opacity:0.92; }
+  .note{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 20px;
+    color:var(--muted);
+    font-size:0.85rem;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Apply For Admission</h1>
+  </header>
+
+  <form id="admissionForm">
+    <div class="field">
+      <label for="name">Student's Name <span class="req">*</span></label>
+      <input type="text" id="name" required>
+    </div>
+
+    <div class="field">
+      <label for="age">Student's Age <span class="req">*</span></label>
+      <input type="number" id="age" min="0" required>
+    </div>
+
+    <div class="field">
+      <label for="gender">Gender</label>
+      <select id="gender">
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="address">Present / Residential Address <span class="req">*</span></label>
+      <input type="text" id="address" required>
+    </div>
+
+    <div class="field">
+      <label for="classReq">Admission Required in Class <span class="req">*</span></label>
+      <select id="classReq" required>
+        <option value="">Select</option>
+        <option>Nursery</option><option>LKG</option><option>UKG</option>
+        <option>I</option><option>II</option><option>III</option><option>IV</option>
+        <option>V</option><option>VI</option><option>VII</option><option>VIII</option>
+        <option>IX</option><option>X</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="percentage">Previous Standard Percentage <span class="req">*</span></label>
+      <input type="text" id="percentage" required>
+    </div>
+
+    <div class="field">
+      <label for="cast">Cast <span class="req">*</span></label>
+      <input type="text" id="cast" required>
+    </div>
+
+    <div class="field">
+      <label for="religion">Religion <span class="req">*</span></label>
+      <input type="text" id="religion" required>
+    </div>
+
+    <div class="field">
+      <label for="dob">Date of Birth <span class="req">*</span></label>
+      <input type="date" id="dob" required>
+    </div>
+
+    <div class="field">
+      <label for="aadhar">Student's Adhar No <span class="req">*</span></label>
+      <input type="text" id="aadhar" pattern="[0-9]{12}" maxlength="12" required>
+    </div>
+
+    <div class="field">
+      <label for="contact">Contact Number <span class="req">*</span></label>
+      <input type="tel" id="contact" required>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p class="note">Note: This is a front-end form template. Connect it to your school's email or WordPress form plugin to receive submissions.</p>
+
+  <script>
+    document.getElementById('admissionForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Form ready — connect this to your submission handler (email/WordPress) to collect entries.');
+    });
+  </script>
+</body>
+</html>
