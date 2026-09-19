@@ -1,181 +1,505 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apply For Admission</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply for Admission | PM SHRI ZP Prathmik Aadarsh Kendra Shala, Khandala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --header-bg:#5c1a1a;
-    --accent:#e8823c;
-    --text:#3d2314;
-    --border:#e0d3ba;
-    --focus:#e8823c;
-    --bg:#faf3e3;
-    --muted:#7a6a55;
+  /* ============================================================
+     THEME: colors and font taken from the ZP school website header.
+     ============================================================ */
+  :root {
+    --primary: #4A200B;       /* header, banner: dark brown (from the ZP site header) */
+    --primary-dark: #33160A;  /* footer */
+    --accent: #CF6A1E;        /* orange buttons, active menu underline */
+    --accent-dark: #B25716;   /* orange hover */
+    --page-bg: #FBF6F0;       /* page background */
+    --card-bg: #FFFFFF;       /* form card */
+    --text: #2B1A10;
+    --muted: #6E5A4A;
+    --border: #DCCBBB;
+    --error: #B3261E;
+    --success: #1E7B45;
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#1c1611;
-      --text:#f1e6d3;
-      --border:#4a3c2a;
-      --muted:#c2b39a;
-    }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--text);
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Devanagari", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
   }
-  :root[data-theme="dark"]{
-    --bg:#1c1611;
-    --text:#f1e6d3;
-    --border:#4a3c2a;
-    --muted:#c2b39a;
+
+  /* Site header (same links and order as the ZP website) */
+  .site-header { background: var(--primary); border-bottom: 3px solid var(--accent); }
+  .site-header .in { max-width: 1180px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .site-header .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--primary); font-weight: 700; font-size: 14px; line-height: 1.2; max-width: 260px; }
+  .site-header .brand img { height: 46px; width: 46px; border-radius: 50%; object-fit: cover; display: block; }
+  .site-nav { display: flex; flex-wrap: wrap; gap: 4px 26px; margin-left: auto; align-items: center; }
+  .site-nav a { color: #fff; text-decoration: none; font-size: 15px; font-weight: 500; padding: 6px 0; border-bottom: 2px solid transparent; }
+  .site-nav a:hover, .site-nav a[aria-current="page"] { color: #fff; border-bottom-color: var(--accent); }
+  .site-nav .cta { background: var(--accent); color: #fff; padding: 12px 28px; border-radius: 999px; border: 0; border-bottom: 0; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: none; box-shadow: 0 4px 14px rgba(0,0,0,.28); }
+  .site-nav .cta:hover { background: var(--accent-dark); color: #fff; }
+  @media (max-width: 760px) { .site-nav { margin-left: 0; width: 100%; } }
+
+  /* Site footer */
+  .site-footer { background: var(--primary-dark); color: #fff; padding: 36px 16px 20px; }
+  .site-footer .in { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 28px; }
+  @media (max-width: 760px) { .site-footer .in { grid-template-columns: 1fr; } }
+  .site-footer .fbrand { display: flex; gap: 12px; align-items: center; font-weight: 700; line-height: 1.25; }
+  .site-footer .fbrand img { height: 52px; width: auto; }
+  .site-footer p { margin: 10px 0 0; font-size: 14px; opacity: .85; }
+  .site-footer h4 { margin: 0 0 10px; font-size: 15px; }
+  .site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .site-footer a { color: #fff; opacity: .88; text-decoration: none; font-size: 14px; }
+  .site-footer a:hover { opacity: 1; text-decoration: underline; }
+  .site-footer .copy { max-width: 1180px; margin: 24px auto 0; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.22); font-size: 12.5px; opacity: .8; }
+
+  .card h2.mtitle { margin: 0 0 4px; font-size: 22px; color: var(--primary); }
+
+
+  .info { max-width: 900px; margin: 0 auto; padding: 36px 16px 48px; }
+  .info h2 { margin: 0 0 16px; font-size: 22px; color: var(--primary); }
+  .docs { margin: 0; padding-left: 20px; display: grid; gap: 10px; }
+  .docs span { display: block; color: var(--muted); font-size: 14px; }
+
+  .banner {
+    /* Banner photo: change the path below to your school building image. */
+    --banner-image: url("assets/banner-building.png");
+    background-color: var(--primary);   /* shown if the image is missing */
+    background-image:
+      linear-gradient(rgba(45, 18, 5, .58), rgba(45, 18, 5, .58)),
+      var(--banner-image);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: clamp(64px, 12vw, 120px) 16px clamp(72px, 12vw, 128px);
   }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:Georgia, 'Times New Roman', serif;
+  .banner h1, .banner p { text-shadow: 0 2px 10px rgba(0, 0, 0, .45); }
+  .banner img { height: 64px; width: auto; display: block; margin: 0 auto 10px; }
+  .banner h1 { margin: 0; font-size: clamp(26px, 5vw, 40px); font-weight: 700; line-height: 1.2; }
+  .banner p { margin: 10px auto 0; max-width: 640px; font-size: 15px; opacity: .92; }
+
+  .wrap { max-width: 760px; margin: -18px auto 48px; padding: 0 16px; }
+  .card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 28px 28px 30px;
+    box-shadow: 0 2px 4px rgba(15, 40, 60, .08), 0 10px 30px rgba(15, 40, 60, .08);
   }
-  header{
-    background:var(--header-bg);
-    padding:40px 24px;
-    text-align:center;
+  .note { margin: 0 0 20px; color: var(--muted); font-size: 14px; }
+  .note b { color: var(--accent); font-weight: 700; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 20px; }
+  .full { grid-column: 1 / -1; }
+  @media (max-width: 620px) {
+    .card { padding: 20px 16px 24px; }
+    .grid { grid-template-columns: 1fr; }
   }
-  header h1{
-    color:#fff;
-    margin:0;
-    font-size:2rem;
+
+  .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  label { font-weight: 600; font-size: 14px; }
+  .req { color: var(--accent); margin-left: 2px; }
+  .hint { font-weight: 400; color: var(--muted); font-size: 13px; }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font: inherit;
+    color: var(--text);
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    min-height: 44px;
   }
-  form{
-    max-width:640px;
-    margin:0 auto;
-    padding:32px 20px 60px;
-    font-family:Arial, Helvetica, sans-serif;
+  textarea { resize: vertical; min-height: 84px; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    outline-offset: 1px;
+    border-color: var(--accent);
   }
-  .field{
-    margin-bottom:28px;
+  .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--error); }
+  .err { color: var(--error); font-size: 13px; min-height: 0; }
+  .err:empty { display: none; }
+
+  .actions { margin-top: 26px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .btn {
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    border-radius: 999px;
+    padding: 12px 36px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 46px;
   }
-  label{
-    display:block;
-    font-weight:700;
-    margin-bottom:10px;
-    font-size:1rem;
-  }
-  .req{ color:#c0392b; }
-  input, select{
-    width:100%;
-    padding:12px 14px;
-    font-size:1rem;
-    border:1px solid var(--border);
-    border-radius:4px;
-    background:var(--bg);
-    color:var(--text);
-  }
-  input:focus, select:focus{
-    outline:none;
-    border-color:var(--focus);
-    box-shadow:0 0 0 2px rgba(47,90,168,0.2);
-  }
-  button{
-    background:var(--accent);
-    color:#fff;
-    border:none;
-    padding:14px 32px;
-    font-size:1rem;
-    border-radius:24px;
-    font-weight:700;
-    cursor:pointer;
-  }
-  button:hover{ opacity:0.92; }
-  .note{
-    max-width:640px;
-    margin:0 auto;
-    padding:0 20px;
-    color:var(--muted);
-    font-size:0.85rem;
-  }
+  .btn:hover { background: var(--accent-dark); }
+  .btn[disabled] { opacity: .65; cursor: progress; }
+  .btn.secondary { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+  .btn.secondary:hover { background: color-mix(in srgb, var(--primary) 8%, transparent); }
+  .form-error { color: var(--error); font-size: 14px; }
+
+  .success { text-align: center; padding: 12px 4px 4px; }
+  .success h2 { color: var(--success); margin: 0 0 8px; font-size: 24px; }
+  .success p { margin: 0 0 18px; color: var(--muted); }
+  .summary { text-align: left; margin: 0 auto 20px; max-width: 480px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .summary div { display: flex; gap: 12px; padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .summary div:last-child { border-bottom: 0; }
+  .summary dt { flex: 0 0 42%; color: var(--muted); }
+  .summary dd { margin: 0; word-break: break-word; }
+  .setup-note { background: #FFF6E5; border: 1px solid #F0D08A; color: #6B4E00; border-radius: 6px; padding: 10px 12px; font-size: 13px; margin-bottom: 18px; text-align: left; }
 </style>
 </head>
 <body>
-  <header>
-    <h1>Apply For Admission</h1>
-  </header>
 
-  <form id="admissionForm">
-    <div class="field">
-      <label for="name">Student's Name <span class="req">*</span></label>
-      <input type="text" id="name" required>
+<header class="site-header">
+  <div class="in">
+    <a class="brand" href="index.html" aria-label="PM SHRI Zilla Parishad Aadarsh Shala, Khandala - Home">
+      <img src="assets/zp-logo.png" alt="School logo" onerror="this.style.display='none'">
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="academics.html">Academics</a>
+      <a href="teachers.html">Teachers</a>
+      <a href="admissions.html" aria-current="page">Admissions</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact Us</a>
+      <a class="cta" href="admission-form.html">Admission Enquiry</a>
+    </nav>
+  </div>
+</header>
+
+<section class="banner">
+  <h1>Apply for Admission</h1>
+  <p>PM SHRI Zilla Parishad Prathmik Aadarsh Kendra Shala, Khandala &middot; Admissions Open 2026&ndash;27</p>
+</section>
+
+<main class="wrap">
+  <div class="card">
+    <h2 class="mtitle">Student details</h2>
+    <form id="admissionForm" novalidate>
+      <p class="note">Fields marked <b>*</b> are required.</p>
+
+      <div class="grid">
+        <div class="field full">
+          <label for="studentName">Student's name <span class="req" aria-hidden="true">*</span></label>
+          <input id="studentName" name="studentName" type="text" autocomplete="name" required>
+          <div class="err" id="studentName-err" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="age">Student's age <span class="req" aria-hidden="true">*</span></label>
+          <input id="age" name="age" type="number" inputmode="numeric" min="3" max="15" step="1" required>
+          <div class="err" id="age-err" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender">
+            <option value="">Select gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label for="address">Present / residential address <span class="req" aria-hidden="true">*</span></label>
+          <textarea id="address" name="address" rows="3" autocomplete="street-address" required></textarea>
+          <div class="err" id="address-err" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="admissionClass">Admission required in class <span class="req" aria-hidden="true">*</span></label>
+          <select id="admissionClass" name="admissionClass" required>
+            <option value="">Select class</option>
+            <option value="1">Class 1</option>
+            <option value="2">Class 2</option>
+            <option value="3">Class 3</option>
+            <option value="4">Class 4</option>
+            <option value="5">Class 5</option>
+            <option value="6">Class 6</option>
+            <option value="7">Class 7</option>
+          </select>
+          <div class="err" id="admissionClass-err" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="prevPercent">
+            Previous standard percentage
+            <span class="req" id="prevReq" aria-hidden="true">*</span>
+            <span class="hint" id="prevHint"></span>
+          </label>
+          <input id="prevPercent" name="prevPercent" type="number" inputmode="decimal" min="0" max="100" step="0.01" placeholder="e.g. 82.5" required>
+          <div class="err" id="prevPercent-err" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="caste">Caste <span class="req" aria-hidden="true">*</span></label>
+          <input id="caste" name="caste" type="text" required>
+          <div class="err" id="caste-err" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="religion">Religion <span class="req" aria-hidden="true">*</span></label>
+          <input id="religion" name="religion" type="text" required>
+          <div class="err" id="religion-err" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="dob">Date of birth <span class="req" aria-hidden="true">*</span></label>
+          <input id="dob" name="dob" type="date" autocomplete="bday" required>
+          <div class="err" id="dob-err" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="aadhar">Student's Aadhar number <span class="req" aria-hidden="true">*</span></label>
+          <input id="aadhar" name="aadhar" type="text" inputmode="numeric" maxlength="14" placeholder="XXXX XXXX XXXX" autocomplete="off" required>
+          <div class="err" id="aadhar-err" aria-live="polite"></div>
+        </div>
+
+        <div class="field full">
+          <label for="contact">Contact number <span class="req" aria-hidden="true">*</span></label>
+          <input id="contact" name="contact" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" autocomplete="tel-national" required>
+          <div class="err" id="contact-err" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn" type="submit" id="submitBtn">Submit</button>
+        <span class="form-error" id="formError" role="alert"></span>
+      </div>
+    </form>
+
+    <div class="success" id="success" hidden>
+      <h2>Application submitted</h2>
+      <p>Thank you. The school office will contact you on the number you provided.</p>
+      <div class="setup-note" id="setupNote" hidden>
+        Demo mode: nothing was sent anywhere. Set <code>FORM_ENDPOINT</code> in the script at the bottom of this file to start receiving applications. You can delete this box afterwards.
+      </div>
+      <dl class="summary" id="summary"></dl>
+      <button class="btn secondary" type="button" id="againBtn">Submit another application</button>
     </div>
+  </div>
+</main>
 
-    <div class="field">
-      <label for="age">Student's Age <span class="req">*</span></label>
-      <input type="number" id="age" min="0" required>
+<section class="info">
+  <h2>Documents to keep ready</h2>
+  <ol class="docs">
+    <li><strong>Birth certificate and Aadhar card copy</strong><span>Required for new admission in 1st Standard.</span></li>
+    <li><strong>Parent's Aadhar card copy</strong><span>A photocopy of either parent's or guardian's Aadhar card.</span></li>
+    <li><strong>Passport-size photo</strong><span>One recent photograph of the student.</span></li>
+  </ol>
+</section>
+
+
+<footer class="site-footer">
+  <div class="in">
+    <div>
+      <div class="fbrand">
+        <img src="assets/zp-logo.png" alt="" onerror="this.style.display='none'">
+        <span>PM SHRI ZILLA PARISHAD<br>PRIMARY ADARSH SCHOOL</span>
+      </div>
+      <p>Nurturing young minds and building bright futures, one student at a time.</p>
     </div>
-
-    <div class="field">
-      <label for="gender">Gender</label>
-      <select id="gender">
-        <option>Male</option>
-        <option>Female</option>
-        <option>Other</option>
-      </select>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="academics.html">Academic Programs</a></li>
+        <li><a href="admissions.html">Admissions</a></li>
+      </ul>
     </div>
-
-    <div class="field">
-      <label for="address">Present / Residential Address <span class="req">*</span></label>
-      <input type="text" id="address" required>
+    <div>
+      <h4>Admin</h4>
+      <ul>
+        <li><a href="login.html">Staff / Admin Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
     </div>
+  </div>
+  <div class="copy">&copy; 2026 PM SHRI ZILLA PARISHAD PRATHMIK AADARSH KENDRA SHALA, KHANDALA. All rights reserved. Managed by Satara Zilla Parishad</div>
+</footer>
 
-    <div class="field">
-      <label for="classReq">Admission Required in Class <span class="req">*</span></label>
-      <select id="classReq" required>
-        <option value="">Select</option>
-        <option>Nursery</option><option>LKG</option><option>UKG</option>
-        <option>I</option><option>II</option><option>III</option><option>IV</option>
-        <option>V</option><option>VI</option><option>VII</option><option>VIII</option>
-        <option>IX</option><option>X</option>
-      </select>
-    </div>
+<script>
+(function () {
+  /* Where to send the application (JSON, POST).
+     Leave empty for demo mode. Examples: a Formspree, Web3Forms or
+     Google Apps Script web-app URL, or your own backend. */
+  var FORM_ENDPOINT = "";
 
-    <div class="field">
-      <label for="percentage">Previous Standard Percentage <span class="req">*</span></label>
-      <input type="text" id="percentage" required>
-    </div>
+  var form = document.getElementById("admissionForm");
+  var success = document.getElementById("success");
+  var submitBtn = document.getElementById("submitBtn");
+  var formError = document.getElementById("formError");
 
-    <div class="field">
-      <label for="cast">Cast <span class="req">*</span></label>
-      <input type="text" id="cast" required>
-    </div>
+  var LABELS = {
+    studentName: "Student's name", age: "Age", gender: "Gender", address: "Address",
+    admissionClass: "Class", prevPercent: "Previous percentage", caste: "Caste",
+    religion: "Religion", dob: "Date of birth", aadhar: "Aadhar number", contact: "Contact number"
+  };
 
-    <div class="field">
-      <label for="religion">Religion <span class="req">*</span></label>
-      <input type="text" id="religion" required>
-    </div>
+  var el = function (id) { return document.getElementById(id); };
 
-    <div class="field">
-      <label for="dob">Date of Birth <span class="req">*</span></label>
-      <input type="date" id="dob" required>
-    </div>
+  /* Date of birth cannot be in the future */
+  var today = new Date();
+  el("dob").max = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
 
-    <div class="field">
-      <label for="aadhar">Student's Adhar No <span class="req">*</span></label>
-      <input type="text" id="aadhar" pattern="[0-9]{12}" maxlength="12" required>
-    </div>
+  /* Aadhar: digits only, grouped as 4-4-4 */
+  el("aadhar").addEventListener("input", function () {
+    var d = this.value.replace(/\D/g, "").slice(0, 12);
+    this.value = d.replace(/(\d{4})(?=\d)/g, "$1 ");
+  });
+  /* Contact: digits only */
+  el("contact").addEventListener("input", function () {
+    this.value = this.value.replace(/\D/g, "").slice(0, 10);
+  });
 
-    <div class="field">
-      <label for="contact">Contact Number <span class="req">*</span></label>
-      <input type="tel" id="contact" required>
-    </div>
+  /* Previous percentage is not applicable for Class 1 */
+  function syncPrevPercent() {
+    var isClass1 = el("admissionClass").value === "1";
+    el("prevPercent").required = !isClass1;
+    el("prevReq").hidden = isClass1;
+    el("prevHint").textContent = isClass1 ? "(optional for Class 1)" : "";
+    if (isClass1) setError("prevPercent", "");
+  }
+  el("admissionClass").addEventListener("change", syncPrevPercent);
+  syncPrevPercent();
 
-    <button type="submit">Submit</button>
-  </form>
+  function setError(id, msg) {
+    el(id + "-err").textContent = msg;
+    var field = el(id).closest(".field");
+    if (field) field.classList.toggle("invalid", !!msg);
+    el(id).setAttribute("aria-invalid", msg ? "true" : "false");
+    if (msg) el(id).setAttribute("aria-describedby", id + "-err");
+  }
 
-  <p class="note">Note: This is a front-end form template. Connect it to your school's email or WordPress form plugin to receive submissions.</p>
+  var rules = {
+    studentName: function (v) { return v.trim().length < 2 ? "Enter the student's full name." : ""; },
+    age: function (v) {
+      var n = Number(v);
+      if (v === "") return "Enter the student's age.";
+      if (!Number.isInteger(n) || n < 3 || n > 15) return "Enter an age between 3 and 15.";
+      return "";
+    },
+    address: function (v) { return v.trim().length < 5 ? "Enter the present address." : ""; },
+    admissionClass: function (v) { return v === "" ? "Select the class." : ""; },
+    prevPercent: function (v) {
+      if (v === "") return el("prevPercent").required ? "Enter the previous percentage." : "";
+      var n = Number(v);
+      return (isNaN(n) || n < 0 || n > 100) ? "Enter a value from 0 to 100." : "";
+    },
+    caste: function (v) { return v.trim() === "" ? "Enter the caste." : ""; },
+    religion: function (v) { return v.trim() === "" ? "Enter the religion." : ""; },
+    dob: function (v) {
+      if (v === "") return "Select the date of birth.";
+      return v > el("dob").max ? "Date of birth cannot be in the future." : "";
+    },
+    aadhar: function (v) {
+      var d = v.replace(/\s/g, "");
+      if (d === "") return "Enter the Aadhar number.";
+      return /^\d{12}$/.test(d) ? "" : "Aadhar number must be 12 digits.";
+    },
+    contact: function (v) {
+      if (v === "") return "Enter a contact number.";
+      return /^[6-9]\d{9}$/.test(v) ? "" : "Enter a valid 10-digit mobile number.";
+    }
+  };
 
-  <script>
-    document.getElementById('admissionForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      alert('Form ready — connect this to your submission handler (email/WordPress) to collect entries.');
+  Object.keys(rules).forEach(function (id) {
+    var input = el(id);
+    input.addEventListener("blur", function () { setError(id, rules[id](input.value)); });
+    input.addEventListener("input", function () {
+      if (input.closest(".field").classList.contains("invalid")) setError(id, rules[id](input.value));
     });
-  </script>
+    input.addEventListener("change", function () {
+      if (input.closest(".field").classList.contains("invalid")) setError(id, rules[id](input.value));
+    });
+  });
+
+  function validateAll() {
+    var firstBad = null;
+    Object.keys(rules).forEach(function (id) {
+      var msg = rules[id](el(id).value);
+      setError(id, msg);
+      if (msg && !firstBad) firstBad = el(id);
+    });
+    return firstBad;
+  }
+
+  function collect() {
+    var data = {};
+    Object.keys(LABELS).forEach(function (id) { data[id] = el(id).value.trim(); });
+    data.aadhar = data.aadhar.replace(/\s/g, "");
+    data.submittedAt = new Date().toISOString();
+    return data;
+  }
+
+  function showSuccess(data) {
+    var summary = el("summary");
+    summary.innerHTML = "";
+    Object.keys(LABELS).forEach(function (id) {
+      if (data[id] === "") return;
+      var row = document.createElement("div");
+      var dt = document.createElement("dt");
+      var dd = document.createElement("dd");
+      dt.textContent = LABELS[id];
+      dd.textContent = id === "admissionClass" ? "Class " + data[id] : data[id];
+      row.appendChild(dt); row.appendChild(dd);
+      summary.appendChild(row);
+    });
+    el("setupNote").hidden = !!FORM_ENDPOINT;
+    form.hidden = true;
+    success.hidden = false;
+    success.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    formError.textContent = "";
+    var bad = validateAll();
+    if (bad) { bad.focus(); return; }
+
+    var data = collect();
+
+    if (!FORM_ENDPOINT) { showSuccess(data); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+    fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(data)
+    }).then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      showSuccess(data);
+    }).catch(function () {
+      formError.textContent = "Could not submit the form. Check your internet connection and try again.";
+    }).then(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit";
+    });
+  });
+
+  el("againBtn").addEventListener("click", function () {
+    form.reset();
+    Object.keys(rules).forEach(function (id) { setError(id, ""); });
+    syncPrevPercent();
+    success.hidden = true;
+    form.hidden = false;
+    el("studentName").focus();
+  });
+
+})();
+</script>
 </body>
 </html>
