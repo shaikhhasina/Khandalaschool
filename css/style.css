@@ -82,6 +82,8 @@ img { max-width: 100%; display: block; }
   background: var(--saffron);
   color: #fff;
   box-shadow: 0 8px 20px rgba(210, 105, 30, .35);
+   padding: 10px 24px;
+   font-size: 15px;;
 }
 .btn-primary:hover { background: var(--saffron-light); }
 
@@ -118,7 +120,10 @@ img { max-width: 100%; display: block; }
   gap: 12px;
   color: #fff;
 }
-.brand img { width: 44px; height: 44px; border-radius: 50%; background: var(--cream); }
+.brand img { height: 60px;
+  width: 60px;
+  object-fit: contain;border-radius: 50%;
+    background: var(--cream);}
 .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
 .brand-name span { display: block; font-size: .72rem; font-weight: 500; color: var(--saffron-light); }
 
