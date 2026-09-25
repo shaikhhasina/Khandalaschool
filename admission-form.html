@@ -47,6 +47,15 @@
   .site-nav .cta:hover { background: var(--accent-dark); color: #fff; }
   @media (max-width: 760px) { .site-nav { margin-left: 0; width: 100%; } }
 
+  /* About Us dropdown */
+  .site-nav .nav-item { position: relative; }
+  .site-nav .caret { font-size: .7em; margin-left: 3px; }
+  .site-nav .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; min-width: 180px; background: #fff; border-radius: 8px; box-shadow: 0 12px 28px rgba(0,0,0,.22); padding: 8px 0; z-index: 200; }
+  .site-nav .dropdown-menu a { display: block; color: var(--text); padding: 10px 16px; border-bottom: 0; font-weight: 500; }
+  .site-nav .dropdown-menu a:hover, .site-nav .dropdown-menu a[aria-current="page"] { color: var(--accent); }
+  .site-nav .nav-item:hover .dropdown-menu, .site-nav .nav-item:focus-within .dropdown-menu { display: block; }
+  @media (max-width: 760px) { .site-nav .dropdown-menu { position: static; box-shadow: none; padding-left: 12px; display: none; } .site-nav .nav-item:hover .dropdown-menu, .site-nav .nav-item:focus-within .dropdown-menu { display: block; } }
+
   /* Site footer */
   .site-footer { background: var(--primary-dark); color: #fff; padding: 36px 16px 20px; }
   .site-footer .in { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 28px; }
@@ -166,7 +175,13 @@
     </a>
     <nav class="site-nav" aria-label="Main">
       <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
+      <div class="nav-item">
+        <a href="about.html">About Us <span class="caret">&#9662;</span></a>
+        <div class="dropdown-menu">
+          <a href="about.html">Our Story</a>
+          <a href="achievements.html">Achievements</a>
+        </div>
+      </div>
       <a href="academics.html">Academics</a>
       <a href="teachers.html">Teachers</a>
       <a href="admissions.html" aria-current="page">Admissions</a>

@@ -6,6 +6,24 @@
 <title>PM SHRI ZILLA PARISHAD PRATHMIK AADARSH KENDRA SHALA, KHANDALA</title>
 <link rel="icon" href="assets/zp-logo.png">
 <link rel="stylesheet" href="css/style.css">
+<style>
+  .main-nav .nav-item.dropdown{position:relative;}
+  .main-nav .nav-item.dropdown>a{display:inline-flex;align-items:center;gap:4px;}
+  .main-nav .nav-item.dropdown .caret{font-size:.65em;transition:transform .15s ease;}
+  .main-nav .dropdown-menu{display:none;position:absolute;top:100%;left:0;min-width:190px;background:#fff;border-radius:8px;box-shadow:0 12px 28px rgba(43,20,10,.18);padding:8px 0;z-index:200;}
+  .main-nav .dropdown-menu a{display:block;padding:10px 18px;white-space:nowrap;color:var(--ink,#2b140a);font-weight:500;}
+  .main-nav .dropdown-menu a:hover,
+  .main-nav .dropdown-menu a.active{background:rgba(232,130,60,.1);color:var(--saffron,#e8823c);}
+  .main-nav .nav-item.dropdown:hover .dropdown-menu,
+  .main-nav .nav-item.dropdown.open .dropdown-menu{display:block;}
+  .main-nav .nav-item.dropdown.open .caret{transform:rotate(180deg);}
+  @media (max-width:900px){
+    .main-nav .nav-item.dropdown{width:100%;}
+    .main-nav .dropdown-menu{position:static;box-shadow:none;display:none;padding-left:14px;background:transparent;}
+    .main-nav .nav-item.dropdown.open .dropdown-menu{display:block;}
+  }
+</style>
+
 </head>
 <body>
 
@@ -21,7 +39,13 @@
     </a>
     <nav class="main-nav" id="mainNav">
       <a href="index.html" class="active">Home</a>
-      <a href="about.html">About Us</a>
+      <div class="nav-item dropdown">
+        <a href="about.html" class="dropdown-toggle">About Us <span class="caret">▾</span></a>
+        <div class="dropdown-menu">
+          <a href="about.html">Our Story</a>
+          <a href="achievements.html">Achievements</a>
+        </div>
+      </div>
       <a href="academics.html">Academics</a>
       <a href="teachers.html">Teachers</a>
       <a href="admissions.html">Admissions</a>
@@ -130,33 +154,48 @@
     </div>
     <div class="team-grid">
 
-      <div class="team-card" style="min-height:340px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start;">
-        <img src="assets/principal.png" alt="Kadam" style="width:150px;height:150px;object-fit:cover;border-radius:50%;display:block;margin:0 auto 16px;">
-        <h3>Mrs. Sangeeta  Kadam</h3>
+     <div class="team-card">
+		          <img src="assets/principal.png" alt="principal" style="width:150px;height:150px;object-fit:cover;border-radius:50%;display:block;margin:0 auto 16px;">
+		
+        <h3>Mrs.Sangeeta  Kadam</h3>
         <p class="qual">B.A., B.Ed.</p>
         <div class="role" style="color:#e8823c; font-weight:600;">Principal</div>
       </div>
 
-      <div class="team-card" style="min-height:340px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start;">
-        <img src="assets/shubhangi.jpeg" alt="shubhangi" style="width:150px;height:150px;object-fit:cover;border-radius:50%;display:block;margin:0 auto 16px;">
-        <h3>Mrs. Shubhangi Gaikwad</h3>
-        <p class="qual">Teaching Class - II A<br>M.A., D.Ed., B.Ed.</p>
-        <div class="role" style="color:#e8823c; font-weight:600;">Student Safety Committee, Sakhi Savitri Committee</div>
+	  <div class="team-card">
+		          <img src="assets/vijymala.jpeg" alt="vijymala" style="width:150px;height:150px;object-fit:cover;border-radius:50%;display:block;margin:0 auto 16px;">
+
+        <h3>Mrs. Vijaymala  Ghadve
+
+</h3>
+        <p class="qual">Teaching Class - 4th C</p>
+        <p class="qual">S.S.C., D.Ed.
+</p>
+        <div class="role" style="color:#e8823c; font-weight:600;">Sakhi Savitri Proceedings</div>
       </div>
 
-      <div class="team-card" style="min-height:340px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start;">
-        <img src="assets/Anita.jpeg" alt="Anita" style="width:150px;height:150px;object-fit:cover;border-radius:50%;display:block;margin:0 auto 16px;">
-        <h3>Mrs. Anita  Patole</h3>
-        <p class="qual">Teaching Class - III B<br>B.A., D.Ed.</p>
-        <div class="role" style="color:#e8823c; font-weight:600;">Women's Grievance Redressal Committee</div>
+      <div class="team-card">
+		          <img src="assets/Karuna.jpeg" alt="Karuna" style="width:150px;height:150px;object-fit:cover;border-radius:50%;display:block;margin:0 auto 16px;">
+
+        <h3>Mrs.Karuna Gaikwad
+
+</h3>
+        <p class="qual">Teaching Class -3rd </p>
+        <p class="qual">B.A., D.Ed.</p>
+        <div class="role" style="color:#e8823c; font-weight:600;"></div>
       </div>
 
-      <div class="team-card" style="min-height:340px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start;">
-        <img src="assets/Rani.jpeg" alt="rani" style="width:150px;height:150px;object-fit:cover;border-radius:50%;display:block;margin:0 auto 16px;">
-        <h3>Mrs.Rani  Bhosale</h3>
-        <p class="qual">Teaching Class - I A<br>B.A., D.Ed.</p>
-        <div class="role" style="color:#e8823c; font-weight:600;">All online work</div>
+	  <div class="team-card">
+		          <img src="assets/Laxman.jpeg" alt="Laxman" style="width:150px;height:150px;object-fit:cover;border-radius:50%;display:block;margin:0 auto 16px;">
+
+        <h3>Mr.Laxman  Patole
+
+</h3>
+        <p class="qual">Teaching Class - 2nd</p>
+        <p class="qual">B.A., B.Ed.</p>
+        <div class="role" style="color:#e8823c; font-weight:600;">Morning Assembly Planning, Sports</div>
       </div>
+
 
     </div>
     <div style="text-align:center; margin-top:32px;">
@@ -300,7 +339,12 @@
       navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
     mainNav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
+      link.addEventListener('click', function (e) {
+        if (link.classList.contains('dropdown-toggle') && window.innerWidth <= 900) {
+          e.preventDefault();
+          link.closest('.nav-item').classList.toggle('open');
+          return;
+        }
         mainNav.classList.remove('is-open');
         navToggle.classList.remove('is-open');
         navToggle.setAttribute('aria-expanded', 'false');
