@@ -1,19 +1,16 @@
 /* ==========================================================================
-   Firebase initialization
-   Replace the values below with YOUR Firebase project's config
-   (Firebase Console -> Project settings -> General -> Your apps -> SDK setup)
+   Firebase initialization (compat SDK loaded via <script> tags in each page)
    ========================================================================== */
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAFGxlwZDOODbP1zk1rv4HLFAx0nvfpzZg",
+  authDomain: "zpschool-eaafb.firebaseapp.com",
+  projectId: "zpschool-eaafb",
+  storageBucket: "zpschool-eaafb.firebasestorage.app",
+  messagingSenderId: "779454499614",
+  appId: "1:779454499614:web:db3b7a17d18342f2da570f"
 };
 
-// Uses the Firebase compat SDKs loaded via <script> tags in each HTML file
 firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
