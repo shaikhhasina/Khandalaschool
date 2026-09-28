@@ -345,12 +345,13 @@
   <div class="copy">&copy; 2026 PM SHRI ZILLA PARISHAD PRATHMIK AADARSH KENDRA SHALA, KHANDALA. All rights reserved. Managed by Satara Zilla Parishad</div>
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
 <script>
 (function () {
-  /* Where to send the application (JSON, POST).
-     Leave empty for demo mode. Examples: a Formspree, Web3Forms or
-     Google Apps Script web-app URL, or your own backend. */
-  var FORM_ENDPOINT = "";
+  /* Applications are saved to Firestore, collection "admissionApplications". */
 
   var form = document.getElementById("admissionForm");
   var success = document.getElementById("success");
@@ -455,7 +456,8 @@
     var data = {};
     Object.keys(LABELS).forEach(function (id) { data[id] = el(id).value.trim(); });
     data.aadhar = data.aadhar.replace(/\s/g, "");
-    data.submittedAt = new Date().toISOString();
+    data.status = "new";
+    data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
     return data;
   }
 
@@ -472,7 +474,6 @@
       row.appendChild(dt); row.appendChild(dd);
       summary.appendChild(row);
     });
-    el("setupNote").hidden = !!FORM_ENDPOINT;
     form.hidden = true;
     success.hidden = false;
     success.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -486,23 +487,20 @@
 
     var data = collect();
 
-    if (!FORM_ENDPOINT) { showSuccess(data); return; }
-
     submitBtn.disabled = true;
     submitBtn.textContent = "Submitting...";
-    fetch(FORM_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify(data)
-    }).then(function (res) {
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      showSuccess(data);
-    }).catch(function () {
-      formError.textContent = "Could not submit the form. Check your internet connection and try again.";
-    }).then(function () {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Submit";
-    });
+    db.collection("admissionApplications").add(data)
+      .then(function () {
+        showSuccess(data);
+      })
+      .catch(function (err) {
+        console.error(err);
+        formError.textContent = "Could not submit the form. Please try again or call the school office.";
+      })
+      .then(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
+      });
   });
 
   el("againBtn").addEventListener("click", function () {

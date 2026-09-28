@@ -16,7 +16,8 @@
       <span class="brand-name" style="color:#fff;">Adarsh Vidyalaya<span>Admin Panel</span></span>
     </div>
     <nav class="dash-nav">
-      <a href="#" class="active">📋 Enquiries</a>
+      <a href="#" class="active" id="tabEnquiries">📋 Enquiries</a>
+      <a href="#" id="tabAdmissions">🎓 Admissions</a>
       <a href="index.html">🌐 View Website</a>
       <a href="#" id="logoutLink">🚪 Log Out</a>
     </nav>
@@ -25,35 +26,69 @@
   <main class="dash-main">
     <div class="dash-topbar">
       <div>
-        <h1>Admission Enquiries</h1>
+        <h1 id="pageTitle">Admission Enquiries</h1>
         <p style="margin:0;">Signed in as <strong id="userEmail">—</strong></p>
       </div>
       <a href="index.html" class="btn btn-maroon">View Live Site</a>
     </div>
 
-    <div class="dash-cards">
-      <div class="dash-card"><div class="num" id="totalCount">0</div><div class="lbl">Total Enquiries</div></div>
-      <div class="dash-card"><div class="num" id="newCount">0</div><div class="lbl">New (Unreviewed)</div></div>
-      <div class="dash-card"><div class="num" id="todayCount">0</div><div class="lbl">Received Today</div></div>
+    <div id="enquiriesView">
+      <div class="dash-cards">
+        <div class="dash-card"><div class="num" id="totalCount">0</div><div class="lbl">Total Enquiries</div></div>
+        <div class="dash-card"><div class="num" id="newCount">0</div><div class="lbl">New (Unreviewed)</div></div>
+        <div class="dash-card"><div class="num" id="todayCount">0</div><div class="lbl">Received Today</div></div>
+      </div>
+
+      <div class="table-card" style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Parent</th>
+              <th>Mobile</th>
+              <th>Class</th>
+              <th>Message</th>
+              <th>Status</th>
+              <th>Received</th>
+            </tr>
+          </thead>
+          <tbody id="enquiryRows">
+            <tr><td colspan="7" class="empty-row">Loading enquiries…</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <div class="table-card">
-      <table>
-        <thead>
-          <tr>
-            <th>Student</th>
-            <th>Parent</th>
-            <th>Mobile</th>
-            <th>Class</th>
-            <th>Message</th>
-            <th>Status</th>
-            <th>Received</th>
-          </tr>
-        </thead>
-        <tbody id="enquiryRows">
-          <tr><td colspan="7" class="empty-row">Loading enquiries…</td></tr>
-        </tbody>
-      </table>
+    <div id="admissionsView" hidden>
+      <div class="dash-cards">
+        <div class="dash-card"><div class="num" id="admTotalCount">0</div><div class="lbl">Total Applications</div></div>
+        <div class="dash-card"><div class="num" id="admNewCount">0</div><div class="lbl">New (Unreviewed)</div></div>
+        <div class="dash-card"><div class="num" id="admTodayCount">0</div><div class="lbl">Received Today</div></div>
+      </div>
+
+      <div class="table-card" style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Class</th>
+              <th>Prev %</th>
+              <th>DOB</th>
+              <th>Caste</th>
+              <th>Religion</th>
+              <th>Aadhar</th>
+              <th>Contact</th>
+              <th>Address</th>
+              <th>Received</th>
+            </tr>
+          </thead>
+          <tbody id="admissionRows">
+            <tr><td colspan="12" class="empty-row">Loading applications…</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
 </div>
