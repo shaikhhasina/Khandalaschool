@@ -6,7 +6,7 @@
 <title>Apply for Admission | PM SHRI ZP Prathmik Aadarsh Kendra Shala, Khandala</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
 <style>
   /* ============================================================
      THEME: colors and font taken from the ZP school website header.
@@ -137,6 +137,10 @@
   .err { color: var(--error); font-size: 13px; min-height: 0; }
   .err:empty { display: none; }
 
+  .sec { grid-column: 1 / -1; margin: 10px 0 0; padding-bottom: 6px; font-size: 16px; color: var(--primary); border-bottom: 2px solid var(--accent); }
+  .sec:first-child { margin-top: 0; }
+  .chk { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: 14px; }
+  .chk input { width: 20px; height: 20px; min-height: 0; margin-top: 3px; flex: none; accent-color: var(--accent); }
   .actions { margin-top: 26px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
   .btn {
     background: var(--accent);
@@ -205,20 +209,19 @@
       <p class="note">Fields marked <b>*</b> are required.</p>
 
       <div class="grid">
+        <h3 class="sec">Student details</h3>
         <div class="field full">
-          <label for="studentName">Student's name <span class="req" aria-hidden="true">*</span></label>
+          <label for="studentName">Student's full name <span class="req" aria-hidden="true">*</span> <span class="hint">(विद्यार्थ्याचे पूर्ण नांव)</span></label>
           <input id="studentName" name="studentName" type="text" autocomplete="name" required>
           <div class="err" id="studentName-err" aria-live="polite"></div>
         </div>
-
         <div class="field">
-          <label for="age">Student's age <span class="req" aria-hidden="true">*</span></label>
-          <input id="age" name="age" type="number" inputmode="numeric" min="3" max="15" step="1" required>
-          <div class="err" id="age-err" aria-live="polite"></div>
+          <label for="aadhar">Student's Aadhar number <span class="req" aria-hidden="true">*</span> <span class="hint">(आधार कार्ड क्रमांक)</span></label>
+          <input id="aadhar" name="aadhar" type="text" inputmode="numeric" maxlength="14" placeholder="XXXX XXXX XXXX" autocomplete="off" required>
+          <div class="err" id="aadhar-err" aria-live="polite"></div>
         </div>
-
         <div class="field">
-          <label for="gender">Gender</label>
+          <label for="gender">Gender <span class="hint">(लिंग)</span></label>
           <select id="gender" name="gender">
             <option value="">Select gender</option>
             <option>Male</option>
@@ -226,13 +229,6 @@
             <option>Other</option>
           </select>
         </div>
-
-        <div class="field full">
-          <label for="address">Present / residential address <span class="req" aria-hidden="true">*</span></label>
-          <textarea id="address" name="address" rows="3" autocomplete="street-address" required></textarea>
-          <div class="err" id="address-err" aria-live="polite"></div>
-        </div>
-
         <div class="field">
           <label for="admissionClass">Admission required in class <span class="req" aria-hidden="true">*</span></label>
           <select id="admissionClass" name="admissionClass" required>
@@ -257,35 +253,86 @@
           <input id="prevPercent" name="prevPercent" type="number" inputmode="decimal" min="0" max="100" step="0.01" placeholder="e.g. 82.5" required>
           <div class="err" id="prevPercent-err" aria-live="polite"></div>
         </div>
-
         <div class="field">
-          <label for="caste">Caste <span class="req" aria-hidden="true">*</span></label>
-          <input id="caste" name="caste" type="text" required>
-          <div class="err" id="caste-err" aria-live="polite"></div>
-        </div>
-
-        <div class="field">
-          <label for="religion">Religion <span class="req" aria-hidden="true">*</span></label>
+          <label for="religion">Religion <span class="req" aria-hidden="true">*</span> <span class="hint">(धर्म)</span></label>
           <input id="religion" name="religion" type="text" required>
           <div class="err" id="religion-err" aria-live="polite"></div>
         </div>
-
         <div class="field">
-          <label for="dob">Date of birth <span class="req" aria-hidden="true">*</span></label>
+          <label for="caste">Caste <span class="req" aria-hidden="true">*</span> <span class="hint">(जात)</span></label>
+          <input id="caste" name="caste" type="text" required>
+          <div class="err" id="caste-err" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="backwardDetails">Backward class details, if applicable <span class="hint">(मागासवर्गीय असल्यास तपशील)</span></label>
+          <input id="backwardDetails" name="backwardDetails" type="text">
+          <div class="err" id="backwardDetails-err" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="nationality">Nationality <span class="req" aria-hidden="true">*</span> <span class="hint">(राष्ट्रीयत्व)</span></label>
+          <input id="nationality" name="nationality" type="text" value="Indian" required>
+          <div class="err" id="nationality-err" aria-live="polite"></div>
+        </div>
+        <h3 class="sec">Birth details</h3>
+        <div class="field">
+          <label for="dob">Date of birth (in figures) <span class="req" aria-hidden="true">*</span> <span class="hint">(जन्म दिनांक (अंकी))</span></label>
           <input id="dob" name="dob" type="date" autocomplete="bday" required>
           <div class="err" id="dob-err" aria-live="polite"></div>
         </div>
-
         <div class="field">
-          <label for="aadhar">Student's Aadhar number <span class="req" aria-hidden="true">*</span></label>
-          <input id="aadhar" name="aadhar" type="text" inputmode="numeric" maxlength="14" placeholder="XXXX XXXX XXXX" autocomplete="off" required>
-          <div class="err" id="aadhar-err" aria-live="polite"></div>
+          <label for="dobWords">Date of birth (in words) <span class="req" aria-hidden="true">*</span> <span class="hint">(जन्म दिनांक (अक्षरी))</span></label>
+          <input id="dobWords" name="dobWords" type="text" placeholder="Filled automatically" required>
+          <div class="err" id="dobWords-err" aria-live="polite"></div>
         </div>
-
+        <div class="field">
+          <label for="birthPlace">Place of birth <span class="req" aria-hidden="true">*</span> <span class="hint">(जन्म स्थळ)</span></label>
+          <input id="birthPlace" name="birthPlace" type="text" required>
+          <div class="err" id="birthPlace-err" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="birthTaluka">Taluka <span class="req" aria-hidden="true">*</span> <span class="hint">(तालुका)</span></label>
+          <input id="birthTaluka" name="birthTaluka" type="text" required>
+          <div class="err" id="birthTaluka-err" aria-live="polite"></div>
+        </div>
         <div class="field full">
-          <label for="contact">Contact number <span class="req" aria-hidden="true">*</span></label>
-          <input id="contact" name="contact" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" autocomplete="tel-national" required>
-          <div class="err" id="contact-err" aria-live="polite"></div>
+          <label for="birthDistrict">District <span class="req" aria-hidden="true">*</span> <span class="hint">(जिल्हा)</span></label>
+          <input id="birthDistrict" name="birthDistrict" type="text" required>
+          <div class="err" id="birthDistrict-err" aria-live="polite"></div>
+        </div>
+        <h3 class="sec">Parents and address</h3>
+        <div class="field full">
+          <label for="motherName">Mother's name <span class="req" aria-hidden="true">*</span> <span class="hint">(आईचे नांव)</span></label>
+          <input id="motherName" name="motherName" type="text" required>
+          <div class="err" id="motherName-err" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="motherMobile">Mother's mobile number <span class="req" aria-hidden="true">*</span> <span class="hint">(आईचा मोबाईल नंबर)</span></label>
+          <input id="motherMobile" name="motherMobile" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" autocomplete="tel-national" required>
+          <div class="err" id="motherMobile-err" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="fatherMobile">Father's mobile number <span class="hint">(वडिलांचा मोबाईल नंबर)</span></label>
+          <input id="fatherMobile" name="fatherMobile" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number">
+          <div class="err" id="fatherMobile-err" aria-live="polite"></div>
+        </div>
+        <div class="field full">
+          <label for="address">Permanent address <span class="req" aria-hidden="true">*</span> <span class="hint">(कायमचा पत्ता)</span></label>
+          <textarea id="address" name="address" rows="3" autocomplete="street-address" required></textarea>
+          <div class="err" id="address-err" aria-live="polite"></div>
+        </div>
+        <h3 class="sec">Declaration</h3>
+        <div class="field full">
+          <label class="chk" for="declaration">
+            <input id="declaration" name="declaration" type="checkbox" required>
+            <span>I declare that the above information about the child under my care is correct to the best of my knowledge.<br>
+            <span class="hint">मी या वरून दाखल देतो की, माझ्या देखरेखेखालील मुलगा/मुलगी/पाल्य संबंधीची वरील माहिती माझ्या उत्तम समजुती प्रमाणे बिनचूक आहे.</span></span>
+          </label>
+          <div class="err" id="declaration-err" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="place">Place <span class="hint">(ठिकाण)</span></label>
+          <input id="place" name="place" type="text">
+          <div class="err" id="place-err" aria-live="polite"></div>
         </div>
       </div>
 
@@ -359,9 +406,13 @@
   var formError = document.getElementById("formError");
 
   var LABELS = {
-    studentName: "Student's name", age: "Age", gender: "Gender", address: "Address",
-    admissionClass: "Class", prevPercent: "Previous percentage", caste: "Caste",
-    religion: "Religion", dob: "Date of birth", aadhar: "Aadhar number", contact: "Contact number"
+    studentName: "Student's full name", aadhar: "Aadhar number", gender: "Gender",
+    admissionClass: "Class", prevPercent: "Previous percentage",
+    religion: "Religion", caste: "Caste", backwardDetails: "Backward class details",
+    nationality: "Nationality", dob: "Date of birth", dobWords: "Date of birth (words)",
+    birthPlace: "Place of birth", birthTaluka: "Taluka", birthDistrict: "District",
+    motherName: "Mother's name", motherMobile: "Mother's mobile", fatherMobile: "Father's mobile",
+    address: "Permanent address", place: "Place"
   };
 
   var el = function (id) { return document.getElementById(id); };
@@ -375,9 +426,43 @@
     var d = this.value.replace(/\D/g, "").slice(0, 12);
     this.value = d.replace(/(\d{4})(?=\d)/g, "$1 ");
   });
-  /* Contact: digits only */
-  el("contact").addEventListener("input", function () {
-    this.value = this.value.replace(/\D/g, "").slice(0, 10);
+  /* Mobile numbers: digits only */
+  ["motherMobile", "fatherMobile"].forEach(function (id) {
+    el(id).addEventListener("input", function () {
+      this.value = this.value.replace(/\D/g, "").slice(0, 10);
+    });
+  });
+
+  /* Date of birth in words (filled automatically, can be edited) */
+  var ONES = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+  var TENS = ["", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+  var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  function numWords(n) {
+    if (n < 20) return ONES[n];
+    if (n < 100) return TENS[Math.floor(n / 10)] + (n % 10 ? " " + ONES[n % 10] : "");
+    if (n < 1000) return ONES[Math.floor(n / 100)] + " Hundred" + (n % 100 ? " " + numWords(n % 100) : "");
+    return numWords(Math.floor(n / 1000)) + " Thousand" + (n % 1000 ? " " + numWords(n % 1000) : "");
+  }
+  function dobToWords(iso) {
+    var p = iso.split("-");
+    return numWords(+p[2]) + " " + MONTHS[+p[1] - 1] + " " + numWords(+p[0]);
+  }
+  function ageFrom(iso) {
+    var p = iso.split("-");
+    var b = new Date(+p[0], +p[1] - 1, +p[2]);
+    var t = new Date();
+    var a = t.getFullYear() - b.getFullYear();
+    var m = t.getMonth() - b.getMonth();
+    if (m < 0 || (m === 0 && t.getDate() < b.getDate())) a--;
+    return a;
+  }
+  var wordsEdited = false;
+  el("dobWords").addEventListener("input", function () { wordsEdited = true; });
+  el("dob").addEventListener("change", function () {
+    if (this.value && !wordsEdited) {
+      el("dobWords").value = dobToWords(this.value);
+      setError("dobWords", "");
+    }
   });
 
   /* Previous percentage is not applicable for Class 1 */
@@ -399,36 +484,48 @@
     if (msg) el(id).setAttribute("aria-describedby", id + "-err");
   }
 
+  function needText(label, min) {
+    return function (v) { return v.trim().length < (min || 1) ? "Enter " + label + "." : ""; };
+  }
+  var mobileOk = /^[6-9]\d{9}$/;
+
   var rules = {
-    studentName: function (v) { return v.trim().length < 2 ? "Enter the student's full name." : ""; },
-    age: function (v) {
-      var n = Number(v);
-      if (v === "") return "Enter the student's age.";
-      if (!Number.isInteger(n) || n < 3 || n > 15) return "Enter an age between 3 and 15.";
-      return "";
+    studentName: needText("the student's full name", 2),
+    aadhar: function (v) {
+      var d = v.replace(/\s/g, "");
+      if (d === "") return "Enter the Aadhar number.";
+      return /^\d{12}$/.test(d) ? "" : "Aadhar number must be 12 digits.";
     },
-    address: function (v) { return v.trim().length < 5 ? "Enter the present address." : ""; },
     admissionClass: function (v) { return v === "" ? "Select the class." : ""; },
     prevPercent: function (v) {
       if (v === "") return el("prevPercent").required ? "Enter the previous percentage." : "";
       var n = Number(v);
       return (isNaN(n) || n < 0 || n > 100) ? "Enter a value from 0 to 100." : "";
     },
-    caste: function (v) { return v.trim() === "" ? "Enter the caste." : ""; },
-    religion: function (v) { return v.trim() === "" ? "Enter the religion." : ""; },
+    religion: needText("the religion"),
+    caste: needText("the caste"),
+    nationality: needText("the nationality"),
     dob: function (v) {
       if (v === "") return "Select the date of birth.";
-      return v > el("dob").max ? "Date of birth cannot be in the future." : "";
+      if (v > el("dob").max) return "Date of birth cannot be in the future.";
+      var a = ageFrom(v);
+      return (a < 3 || a > 15) ? "Check the date of birth (age should be between 3 and 15)." : "";
     },
-    aadhar: function (v) {
-      var d = v.replace(/\s/g, "");
-      if (d === "") return "Enter the Aadhar number.";
-      return /^\d{12}$/.test(d) ? "" : "Aadhar number must be 12 digits.";
+    dobWords: needText("the date of birth in words"),
+    birthPlace: needText("the place of birth"),
+    birthTaluka: needText("the taluka"),
+    birthDistrict: needText("the district"),
+    motherName: needText("the mother's name", 2),
+    motherMobile: function (v) {
+      if (v === "") return "Enter the mother's mobile number.";
+      return mobileOk.test(v) ? "" : "Enter a valid 10-digit mobile number.";
     },
-    contact: function (v) {
-      if (v === "") return "Enter a contact number.";
-      return /^[6-9]\d{9}$/.test(v) ? "" : "Enter a valid 10-digit mobile number.";
-    }
+    fatherMobile: function (v) {
+      if (v === "") return "";
+      return mobileOk.test(v) ? "" : "Enter a valid 10-digit mobile number.";
+    },
+    address: needText("the permanent address", 5),
+    declaration: function () { return el("declaration").checked ? "" : "Please accept the declaration."; }
   };
 
   Object.keys(rules).forEach(function (id) {
@@ -456,6 +553,9 @@
     var data = {};
     Object.keys(LABELS).forEach(function (id) { data[id] = el(id).value.trim(); });
     data.aadhar = data.aadhar.replace(/\s/g, "");
+    data.age = ageFrom(data.dob);
+    data.contact = data.motherMobile;          /* kept so the existing dashboard still shows a contact number */
+    data.declarationAccepted = true;
     data.status = "new";
     data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
     return data;
@@ -505,6 +605,7 @@
 
   el("againBtn").addEventListener("click", function () {
     form.reset();
+    wordsEdited = false;
     Object.keys(rules).forEach(function (id) { setError(id, ""); });
     syncPrevPercent();
     success.hidden = true;
